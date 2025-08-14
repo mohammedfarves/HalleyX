@@ -19,7 +19,7 @@ const Cart = () => {
   const { register, handleSubmit, formState: { errors } } = useForm();
 
   const createOrderMutation = useMutation(
-    (orderData) => axios.post('/api/orders', orderData).then(res => res.data),
+    (orderData) => axios.post('https://halleyx-server.onrender.com/api/orders', orderData).then(res => res.data),
     {
       onSuccess: () => {
         toast.success('Order placed successfully!');
