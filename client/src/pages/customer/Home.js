@@ -11,7 +11,7 @@ const Home = () => {
 
   const { data: productsData, isLoading } = useQuery(
     'featured-products',
-    () => axios.get('/api/products?limit=8').then(res => res.data),
+    () => axios.get('https://halleyx-server.onrender.com/api/products?limit=8').then(res => res.data),
     {
       staleTime: 5 * 60 * 1000,
     }
