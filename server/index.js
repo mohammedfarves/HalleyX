@@ -93,5 +93,5 @@ const PORT = process.env.PORT || 5000;
 app.listen(PORT, () => {
   console.log(`🚀 Server running on port ${PORT} in ${process.env.NODE_ENV} mode`);
   console.log(`📱 Frontend URL: ${process.env.FRONTEND_URL}`);
-  console.log(`🔧 API URL: http://localhost:${PORT}/api`);
+  console.log(`🔧 API URL: http://localhost:${PORT}`);
 });
