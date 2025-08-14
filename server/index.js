@@ -4,8 +4,6 @@ import dotenv from 'dotenv';
 import helmet from 'helmet';
 import compression from 'compression';
 import rateLimit from 'express-rate-limit';
-import path from 'path';
-import { fileURLToPath } from 'url';
 import connectDB from './config/database.js';
 
 import authRoutes from './routes/auth.js';
@@ -15,9 +13,6 @@ import orderRoutes from './routes/orders.js';
 import adminRoutes from './routes/admin.js';
 
 dotenv.config();
-
-const __filename = fileURLToPath(import.meta.url);
-const __dirname = path.dirname(__filename);
 
 const app = express();
 
@@ -35,7 +30,7 @@ app.use('/api/', limiter);
 
 app.use(cors({
   origin: process.env.NODE_ENV === 'production' 
-    ? process.env.FRONTEND_URL 
+    ? process.env.FRONTEND_URL  // This should be your Render frontend URL
     : ['https://halleyx-client.onrender.com'],
   credentials: true,
 }));
@@ -57,13 +52,14 @@ app.get('/api/health', (req, res) => {
   });
 });
 
-if (process.env.NODE_ENV === 'production') {
-  app.use(express.static(path.join(__dirname, '../client/build')));
+// REMOVE these lines — do NOT serve frontend static files here
+// if (process.env.NODE_ENV === 'production') {
+//   app.use(express.static(path.join(__dirname, '../client/build')));
   
-  app.get('*', (req, res) => {
-    res.sendFile(path.join(__dirname, '../client/build', 'index.html'));
-  });
-}
+//   app.get('*', (req, res) => {
+//     res.sendFile(path.join(__dirname, '../client/build', 'index.html'));
+//   });
+// }
 
 app.use((err, req, res, next) => {
   console.error('Error:', err.stack);
@@ -96,6 +92,6 @@ const PORT = process.env.PORT || 5000;
 
 app.listen(PORT, () => {
   console.log(`🚀 Server running on port ${PORT} in ${process.env.NODE_ENV} mode`);
-  console.log(`📱 Frontend URL: http://localhost:3000`);
+  console.log(`📱 Frontend URL: ${process.env.FRONTEND_URL}`);
   console.log(`🔧 API URL: http://localhost:${PORT}/api`);
 });
