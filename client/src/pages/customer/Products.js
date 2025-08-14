@@ -13,7 +13,7 @@ const Products = () => {
 
   const { data: productsData, isLoading } = useQuery(
     ['products', search, sortBy, sortOrder],
-    () => axios.get(`/api/products?search=${search}&sortBy=${sortBy}&sortOrder=${sortOrder}&limit=50`).then(res => res.data),
+    () => axios.get(`https://halleyx-server.onrender.com/api/products?search=${search}&sortBy=${sortBy}&sortOrder=${sortOrder}&limit=50`).then(res => res.data),
     {
       staleTime: 5 * 60 * 1000,
     }
