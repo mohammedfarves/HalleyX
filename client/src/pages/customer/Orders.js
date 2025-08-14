@@ -17,7 +17,7 @@ const Orders = () => {
 
   const { data: ordersData, isLoading } = useQuery(
     'orders',
-    () => axios.get('/api/orders').then(res => res.data),
+    () => axios.get('https://halleyx-server.onrender.com/api/orders').then(res => res.data),
     {
       enabled: isAuthenticated,
       staleTime: 5 * 60 * 1000,
