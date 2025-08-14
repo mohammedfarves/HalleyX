@@ -24,14 +24,14 @@ const AdminProducts = () => {
 
   const { data: productsData, isLoading } = useQuery(
     'admin-products',
-    () => axios.get('/api/products?limit=100').then(res => res.data),
+    () => axios.get('https://halleyx-server.onrender.com/api/products?limit=100').then(res => res.data),
     {
       enabled: isAuthenticated && user?.role === 'admin',
     }
   );
 
   const createProductMutation = useMutation(
-    (formData) => axios.post('/api/products', formData, {
+    (formData) => axios.post('https://halleyx-server.onrender.com/api/products', formData, {
       headers: { 'Content-Type': 'multipart/form-data' }
     }),
     {
@@ -48,7 +48,7 @@ const AdminProducts = () => {
   );
 
   const updateProductMutation = useMutation(
-    ({ id, formData }) => axios.put(`/api/products/${id}`, formData, {
+    ({ id, formData }) => axios.put(`https://halleyx-server.onrender.com/api/products/${id}`, formData, {
       headers: { 'Content-Type': 'multipart/form-data' }
     }),
     {
@@ -65,7 +65,7 @@ const AdminProducts = () => {
   );
 
   const deleteProductMutation = useMutation(
-    (id) => axios.delete(`/api/products/${id}`),
+    (id) => axios.delete(`https://halleyx-server.onrender.com/api/products/${id}`),
     {
       onSuccess: () => {
         toast.success('Product deleted successfully!');
