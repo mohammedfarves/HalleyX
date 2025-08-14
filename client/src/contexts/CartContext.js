@@ -21,7 +21,7 @@ export const CartProvider = ({ children }) => {
   // Fetch cart items
   const { data: cartItems = [], isLoading } = useQuery(
     'cart',
-    () => axios.get('/api/cart').then(res => res.data),
+    () => axios.get('https://halleyx-server.onrender.com/api/cart').then(res => res.data),
     {
       enabled: isAuthenticated,
       onError: (error) => {
@@ -35,7 +35,7 @@ export const CartProvider = ({ children }) => {
   // Add to cart mutation
   const addToCartMutation = useMutation(
     ({ productId, quantity = 1 }) => 
-      axios.post('/api/cart', { productId, quantity }).then(res => res.data),
+      axios.post('https://halleyx-server.onrender.com/api/cart', { productId, quantity }).then(res => res.data),
     {
       onSuccess: () => {
         queryClient.invalidateQueries('cart');
@@ -50,7 +50,7 @@ export const CartProvider = ({ children }) => {
   // Update cart item mutation
   const updateCartMutation = useMutation(
     ({ itemId, quantity }) => 
-      axios.put(`/api/cart/${itemId}`, { quantity }).then(res => res.data),
+      axios.put(`https://halleyx-server.onrender.com/api/cart/${itemId}`, { quantity }).then(res => res.data),
     {
       onSuccess: () => {
         queryClient.invalidateQueries('cart');
@@ -63,7 +63,7 @@ export const CartProvider = ({ children }) => {
 
   // Remove from cart mutation
   const removeFromCartMutation = useMutation(
-    (itemId) => axios.delete(`/api/cart/${itemId}`),
+    (itemId) => axios.delete(`https://halleyx-server.onrender.com/api/cart/${itemId}`),
     {
       onSuccess: () => {
         queryClient.invalidateQueries('cart');
@@ -77,7 +77,7 @@ export const CartProvider = ({ children }) => {
 
   // Clear cart mutation
   const clearCartMutation = useMutation(
-    () => axios.delete('/api/cart'),
+    () => axios.delete('https://halleyx-server.onrender.com/api/cart'),
     {
       onSuccess: () => {
         queryClient.invalidateQueries('cart');
