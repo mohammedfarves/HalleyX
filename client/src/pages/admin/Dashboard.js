@@ -17,7 +17,7 @@ const Dashboard = () => {
 
   const { data: stats, isLoading } = useQuery(
     'admin-stats',
-    () => axios.get('/api/admin/stats').then(res => res.data),
+    () => axios.get('https://halleyx-server.onrender.com/api/admin/stats').then(res => res.data),
     {
       enabled: isAuthenticated && user?.role === 'admin',
       staleTime: 5 * 60 * 1000,
@@ -26,7 +26,7 @@ const Dashboard = () => {
 
   const { data: recentOrders } = useQuery(
     'recent-orders',
-    () => axios.get('/api/orders?limit=5').then(res => res.data),
+    () => axios.get('https://halleyx-server.onrender.com/api/orders?limit=5').then(res => res.data),
     {
       enabled: isAuthenticated && user?.role === 'admin',
       staleTime: 5 * 60 * 1000,
