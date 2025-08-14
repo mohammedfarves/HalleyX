@@ -29,7 +29,7 @@ export const AuthProvider = ({ children }) => {
       const token = localStorage.getItem('token');
       if (token) {
         try {
-          const response = await axios.get('/api/auth/me');
+          const response = await axios.get('https://halleyx-server.onrender.com/api/auth/me');
           setUser(response.data.user);
         } catch (error) {
           localStorage.removeItem('token');
@@ -43,7 +43,7 @@ export const AuthProvider = ({ children }) => {
   }, []);
 
   const login = async (email, password, isAdmin = false) => {
-    const endpoint = isAdmin ? '/api/auth/admin/login' : '/api/auth/login';
+    const endpoint = isAdmin ? 'https://halleyx-server.onrender.com/api/auth/admin/login' : 'https://halleyx-server.onrender.com/api/auth/login';
     const response = await axios.post(endpoint, { email, password });
     
     const { user, token } = response.data;
@@ -56,7 +56,7 @@ export const AuthProvider = ({ children }) => {
   };
 
   const register = async (userData) => {
-    const response = await axios.post('/api/auth/register', userData);
+    const response = await axios.post('https://halleyx-server.onrender.com/api/auth/register', userData);
     
     const { user, token } = response.data;
     
