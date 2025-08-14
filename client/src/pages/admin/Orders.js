@@ -19,14 +19,14 @@ const AdminOrders = () => {
 
   const { data: ordersData, isLoading } = useQuery(
     'admin-orders',
-    () => axios.get('/api/orders').then(res => res.data),
+    () => axios.get('https://halleyx-server.onrender.com/api/orders').then(res => res.data),
     {
       enabled: isAuthenticated && user?.role === 'admin',
     }
   );
 
   const updateStatusMutation = useMutation(
-    ({ orderId, status }) => axios.put(`/api/orders/${orderId}/status`, { status }),
+    ({ orderId, status }) => axios.put(`https://halleyx-server.onrender.com/api/orders/${orderId}/status`, { status }),
     {
       onSuccess: () => {
         toast.success('Order status updated successfully!');
