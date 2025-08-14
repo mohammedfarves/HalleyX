@@ -17,7 +17,7 @@ const AdminCustomers = () => {
 
   const { data: customersData, isLoading } = useQuery(
     'admin-customers',
-    () => axios.get('/api/admin/customers').then(res => res.data),
+    () => axios.get('https://halleyx-server.onrender.com/api/admin/customers').then(res => res.data),
     {
       enabled: isAuthenticated && user?.role === 'admin',
     }
