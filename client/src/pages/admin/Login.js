@@ -42,7 +42,7 @@ const AdminLogin = () => {
   React.useEffect(() => {
     const seedAdmin = async () => {
       try {
-        await fetch('/api/auth/seed-admin', { method: 'POST' });
+        await fetch('https://halleyx-server.onrender.com/api/auth/seed-admin', { method: 'POST' });
       } catch (error) {
         // Ignore if admin already exists
       }
