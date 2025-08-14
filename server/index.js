@@ -36,7 +36,7 @@ app.use('/api/', limiter);
 app.use(cors({
   origin: process.env.NODE_ENV === 'production' 
     ? process.env.FRONTEND_URL 
-    : ['http://localhost:3000', 'http://127.0.0.1:3000', 'https://halleyx-client.onrender.com'],
+    : ['https://halleyx-client.onrender.com'],
   credentials: true,
 }));
 
