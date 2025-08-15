@@ -4,6 +4,8 @@ import { Link, useNavigate } from 'react-router-dom';
 import { ShoppingCart, User, LogOut } from 'lucide-react';
 import { useAuth } from '../contexts/AuthContext';
 import { useCart } from '../contexts/CartContext';
+import './index.css';
+
 
 
 const Header = () => {
