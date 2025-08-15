@@ -109,7 +109,7 @@ const Header = () => {
   );
 };
 
-function Navbar() {
+function Header() {
   const [isOpen, setIsOpen] = useState(false);
 
   return (
@@ -131,8 +131,6 @@ function Navbar() {
     </nav>
   );
 }
-
-export default Navbar;
 
 
 export default Header;
