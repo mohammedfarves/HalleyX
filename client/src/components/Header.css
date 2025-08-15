@@ -1,1 +1,43 @@
+/* Mobile menu base styles */
+.nav {
+  transition: max-height 0.3s ease-out, opacity 0.3s ease-out;
+  overflow: hidden;
+  max-height: 0;
+  opacity: 0;
+  flex-direction: column;
+  background: white;
+  padding: 0 1rem;
+}
+
+/* When menu is open */
+.nav.open {
+  max-height: 500px; /* enough to show all links */
+  opacity: 1;
+  padding: 1rem;
+}
+
+/* Hamburger button */
+.hamburger {
+  background: none;
+  border: none;
+  font-size: 1.5rem;
+  cursor: pointer;
+  display: none;
+}
+
+/* Responsive toggle */
+@media (max-width: 768px) {
+  .hamburger {
+    display: block;
+  }
+
+  .nav {
+    display: flex;
+  }
+
+  .header-container {
+    flex-direction: column;
+    align-items: flex-start;
+  }
+}
 
