@@ -11,6 +11,7 @@ const Header = () => {
   const { user, logout, isAuthenticated } = useAuth();
   const { getCartItemsCount } = useCart();
   const navigate = useNavigate();
+  const [menuOpen, setMenuOpen] = React.useState(false);
 
   const handleLogout = () => {
     logout();
