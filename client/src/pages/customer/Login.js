@@ -33,7 +33,7 @@ const Login = () => {
   };
 
   return (
-    <div style={{ minHeight: '100vh', background: 'linear-gradient(105deg, #6a8affff 0%, #78bc9c 100%)'}}>
+    <div style={{ minHeight: '100vh', background: 'linear-gradient(105deg, #6a8affff 0%, #78bc9c 100%)' ,marginTop:"94px"}}>
       <Header />
       
       <div style={{ display: 'flex', alignItems: 'center', justifyContent: 'center', padding: '4rem 1rem' }}>
