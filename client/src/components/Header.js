@@ -6,7 +6,7 @@ import { useAuth } from '../contexts/AuthContext';
 import { useCart } from '../contexts/CartContext';
 import './Header.css';
 
-
+const [menuOpen, setMenuOpen] = React.useState(false);
 const Header = () => {
   const { user, logout, isAuthenticated } = useAuth();
   const { getCartItemsCount } = useCart();
@@ -22,7 +22,12 @@ const Header = () => {
       <div className="container" style={{ display: 'flex', alignItems: 'center', justifyContent: 'space-between' }}>
         <img src={hallexyLogo} alt="Hallexy Logo" style={{ width: '150px', marginBottom: '1rem' }} />
 
-        <nav style={{ display: 'flex', alignItems: 'center', gap: '2rem' }}>
+        <button className="hamburger" onClick={() => setMenuOpen(!menuOpen)}> {menuOpen ? '✖' : '☰'} </button>
+
+
+       <div className={`nav-wrapper ${menuOpen ? 'open' : ''}`}>
+          <nav style={{ display: 'flex', alignItems: 'center', gap: '2rem' }}>
+
           <Link to="/" style={{ textDecoration: 'none', color: '#4b5563', fontWeight: '500' }}>
             Home
           </Link>
@@ -103,6 +108,7 @@ const Header = () => {
             </div>
           )}
         </nav>
+      </div>
       </div>
     </header>
   );
