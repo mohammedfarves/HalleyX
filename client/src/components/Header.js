@@ -6,7 +6,6 @@ import { useAuth } from '../contexts/AuthContext';
 import { useCart } from '../contexts/CartContext';
 import './Header.css';
 
-const [menuOpen, setMenuOpen] = React.useState(false);
 const Header = () => {
   const { user, logout, isAuthenticated } = useAuth();
   const { getCartItemsCount } = useCart();
