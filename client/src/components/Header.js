@@ -1,4 +1,5 @@
 import React from 'react';
+import hallexyLogo from './hallexyLogo.png'; 
 import { Link, useNavigate } from 'react-router-dom';
 import { ShoppingCart, User, LogOut } from 'lucide-react';
 import { useAuth } from '../contexts/AuthContext';
@@ -16,11 +17,9 @@ const Header = () => {
   };
 
   return (
-    <header style={{ background: 'white', borderBottom: '1px solid #e5e7eb', padding: '1rem 0' }}>
+    <header style={{ background: 'white',position:'fixed',top:"0",right:"0",left:"0", borderBottom: '1px solid #e5e7eb', padding: '1rem 0' }}>
       <div className="container" style={{ display: 'flex', alignItems: 'center', justifyContent: 'space-between' }}>
-        <Link to="/" style={{ textDecoration: 'none', color: '#111827', fontSize: '1.5rem', fontWeight: '700' }}>
-          HalleyX Store
-        </Link>
+        <img src={hallexyLogo} alt="Hallexy Logo" style={{ width: '150px', marginBottom: '1rem' }} />
 
         <nav style={{ display: 'flex', alignItems: 'center', gap: '2rem' }}>
           <Link to="/" style={{ textDecoration: 'none', color: '#4b5563', fontWeight: '500' }}>
