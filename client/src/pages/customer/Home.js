@@ -1,4 +1,5 @@
 import React from 'react';
+import Footer from './footer'; // since it's in the same folder
 import { Link } from 'react-router-dom';
 import { useQuery } from 'react-query';
 import axios from 'axios';
@@ -11,7 +12,7 @@ const Home = () => {
 
   const { data: productsData, isLoading } = useQuery(
     'featured-products',
-    () => axios.get('https://halleyx-server.onrender.com/api/products?limit=8').then(res => res.data),
+    () => axios.get('/api/products?limit=8').then(res => res.data),
     {
       staleTime: 5 * 60 * 1000,
     }
@@ -20,11 +21,12 @@ const Home = () => {
   const products = productsData?.products || [];
 
   return (
-    <div style={{ minHeight: '100vh', background: '#f9fafb' }}>
+   <div style={{ minHeight: '100vh', background: '#f9fafb',marginTop:"94px"}}>
+
       <Header />
       
       {/* Hero Section */}
-      <section style={{ background: 'linear-gradient(105deg, #6a8affff 0%, #78bc9c 100%)', color: 'white', padding: '4rem 0' }}>
+      <section style={{ background: 'linear-gradient(105deg, #6a8affff 0%, #78bc9c 100%)', color: 'white', padding: '5rem 0' }}>
         <div className="container text-center">
           <h1 style={{ fontSize: '3rem', fontWeight: '700', marginBottom: '1rem' }}>
             Welcome to HalleyX Store
@@ -141,7 +143,9 @@ const Home = () => {
           </div>
         </div>
       </section>
+      <Footer />
     </div>
+
   );
 };
 
